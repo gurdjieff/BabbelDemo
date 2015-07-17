@@ -14,6 +14,8 @@
 		50B1F03D1B58717D00CEBB06 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 50B1F03C1B58717D00CEBB06 /* Images.xcassets */; };
 		50B1F0401B58717D00CEBB06 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 50B1F03E1B58717D00CEBB06 /* LaunchScreen.xib */; };
 		50B1F04C1B58717D00CEBB06 /* BabbelCodeTestTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B1F04B1B58717D00CEBB06 /* BabbelCodeTestTests.m */; };
+		50B1F05A1B59660400CEBB06 /* LanguageData.m in Sources */ = {isa = PBXBuildFile; fileRef = 50B1F0591B59660400CEBB06 /* LanguageData.m */; };
+		50B1F05C1B596C7100CEBB06 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = 50B1F05B1B596C7100CEBB06 /* words.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +42,9 @@
 		50B1F0451B58717D00CEBB06 /* BabbelCodeTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BabbelCodeTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		50B1F04A1B58717D00CEBB06 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		50B1F04B1B58717D00CEBB06 /* BabbelCodeTestTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BabbelCodeTestTests.m; sourceTree = "<group>"; };
+		50B1F0581B59660400CEBB06 /* LanguageData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LanguageData.h; sourceTree = "<group>"; };
+		50B1F0591B59660400CEBB06 /* LanguageData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LanguageData.m; sourceTree = "<group>"; };
+		50B1F05B1B596C7100CEBB06 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +90,7 @@
 				50B1F0341B58717D00CEBB06 /* AppDelegate.m */,
 				50B1F0361B58717D00CEBB06 /* ViewController.h */,
 				50B1F0371B58717D00CEBB06 /* ViewController.m */,
+				50B1F0571B5965DD00CEBB06 /* model */,
 				50B1F0391B58717D00CEBB06 /* Main.storyboard */,
 				50B1F03C1B58717D00CEBB06 /* Images.xcassets */,
 				50B1F03E1B58717D00CEBB06 /* LaunchScreen.xib */,
@@ -117,6 +123,16 @@
 				50B1F04A1B58717D00CEBB06 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		50B1F0571B5965DD00CEBB06 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				50B1F0581B59660400CEBB06 /* LanguageData.h */,
+				50B1F0591B59660400CEBB06 /* LanguageData.m */,
+				50B1F05B1B596C7100CEBB06 /* words.json */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,6 +216,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				50B1F03B1B58717D00CEBB06 /* Main.storyboard in Resources */,
+				50B1F05C1B596C7100CEBB06 /* words.json in Resources */,
 				50B1F0401B58717D00CEBB06 /* LaunchScreen.xib in Resources */,
 				50B1F03D1B58717D00CEBB06 /* Images.xcassets in Resources */,
 			);
@@ -222,6 +239,7 @@
 				50B1F0381B58717D00CEBB06 /* ViewController.m in Sources */,
 				50B1F0351B58717D00CEBB06 /* AppDelegate.m in Sources */,
 				50B1F0321B58717D00CEBB06 /* main.m in Sources */,
+				50B1F05A1B59660400CEBB06 /* LanguageData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
