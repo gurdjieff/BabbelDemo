@@ -8,13 +8,19 @@
 
 #import "ViewController.h"
 #import "LanguageData.h"
-#define speed 0.02
+static const CGFloat kSpeed = 0.02;
 
 @interface ViewController ()
 {
-    float screenHeight;
-    BOOL gameOver;
-    CGRect translatedOriginFrame;
+    float _screenHeight;
+    BOOL _gameOver;
+    CGRect _translatedOriginFrame;
+    IBOutlet UILabel * _displayedLabel;
+    IBOutlet UILabel * _translatedLabel;
+    IBOutlet UILabel * _counterLabel;
+    IBOutlet UILabel * _commentLabel;
+    IBOutlet UIButton * _correctBtn;
+    IBOutlet UIButton * _wrongBtn;
 }
 
 @end
@@ -35,19 +41,19 @@
 
 -(void)wordMovement
 {
-    if (gameOver) {
+    if (_gameOver) {
         return;
     }
     if (_translatedLabel.alpha == 1.0) {
         CGPoint center = _translatedLabel.center;
-        if (center.y + _translatedLabel.frame.size.height/2 >= screenHeight) {
+        if (center.y + _translatedLabel.frame.size.height/2 >= _screenHeight) {
             [LanguageData shareLanguageData].index += 1;
             [self setDisplayedLabelContent];
         } else {
             _translatedLabel.center = CGPointMake(center.x, center.y+2.0);
         }
     }
-    [self performSelector:@selector(wordMovement) withObject:nil afterDelay:speed];
+    [self performSelector:@selector(wordMovement) withObject:nil afterDelay:kSpeed];
 }
 
 -(void)resetCounter
@@ -64,7 +70,7 @@
         _commentLabel.text = [NSString stringWithFormat:@"%d answers are right in %lu questions", count, (unsigned long)[[[LanguageData shareLanguageData] languageArray] count]];
         _correctBtn.userInteractionEnabled = NO;
         _wrongBtn.userInteractionEnabled = NO;
-        gameOver = YES;
+        _gameOver = YES;
         return;
     }
     _displayedLabel.text = [[LanguageData shareLanguageData] getDisplayedContent];
@@ -78,7 +84,7 @@
 
 -(void)setTranslatedLabelContentAndFrame
 {
-    _translatedLabel.frame = translatedOriginFrame;
+    _translatedLabel.frame = _translatedOriginFrame;
     _translatedLabel.text = [[LanguageData shareLanguageData] getAnRandomAnswer];
     [UIView animateWithDuration:0.12 animations:^{
         _translatedLabel.alpha = 1.0;
@@ -99,8 +105,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     CGRect frame = [[UIScreen mainScreen] bounds];
-    screenHeight = frame.size.height;
-    translatedOriginFrame = _translatedLabel.frame;
+    _screenHeight = frame.size.height;
+    _translatedOriginFrame = _translatedLabel.frame;
     _commentLabel.hidden = YES;
     // Do any additional setup after loading the view, typically from a nib.
 }

@@ -9,9 +9,8 @@
 #import <Foundation/Foundation.h>
 
 @interface LanguageData : NSObject
-@property(strong, nonatomic) NSMutableArray * languageArray;
-@property NSUInteger counter;
 @property NSUInteger index;
+
 
 +(LanguageData *)shareLanguageData;
 -(NSString *)getDisplayedContent;
@@ -19,5 +18,7 @@
 -(NSString *)getAnRandomAnswer;
 -(NSInteger)getCounter;
 -(BOOL)isTestFinished;
+-(NSMutableArray *)languageArray;
+
 
 @end

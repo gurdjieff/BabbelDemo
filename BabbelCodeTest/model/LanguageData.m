@@ -9,36 +9,29 @@
 #import "LanguageData.h"
 @interface LanguageData()
 {
-    BOOL currentAnswer;
+    BOOL _currentAnswer;
+    NSMutableArray * _languageArray;
+    NSUInteger _counter;
+    NSUInteger _index;
 }
 @end
 
 
 @implementation LanguageData
 
-+(LanguageData *)shareLanguageData
-{
-    static LanguageData * shareInstance = nil;
-    static dispatch_once_t predicate;
-    dispatch_once(&predicate, ^{
-        shareInstance = [[self alloc] init];
-    });
-    return shareInstance;
-}
+#pragma mark -inner method
 
--(id)init
+- (id)init
 {
     if ((self = [super init])) {
         _languageArray = [[NSMutableArray alloc] init];
         _counter = 0;
-//        _index = 250;
         [self extractData];
     }
     return self;
 }
 
-
--(void)extractData
+- (void)extractData
 {
     NSString * filePath = [[NSBundle mainBundle] pathForResource:@"words" ofType:@"json"];
     if (filePath) {
@@ -49,9 +42,25 @@
     }
 }
 
+#pragma mark -outer method
++ (LanguageData *)shareLanguageData
+{
+    static LanguageData * shareInstance = nil;
+    static dispatch_once_t predicate;
+    dispatch_once(&predicate, ^{
+        shareInstance = [[self alloc] init];
+    });
+    return shareInstance;
+}
+
 -(NSString *)getDisplayedContent
 {
     return [_languageArray objectAtIndex:_index][@"text_eng"];
+}
+
+-(NSMutableArray *)languageArray
+{
+    return _languageArray;
 }
 
 -(BOOL)isTestFinished
@@ -63,7 +72,7 @@
 -(BOOL)judgeAnwere:(BOOL)choice
 {
     _index++;
-    if (currentAnswer == choice) {
+    if (_currentAnswer == choice) {
         _counter++;
         return YES;
     } else {
@@ -80,15 +89,14 @@
 {
     int random = rand();
     if (random % 2 == 0) {
-        currentAnswer = YES;
+        _currentAnswer = YES;
         return [[_languageArray objectAtIndex:_index] objectForKey:@"text_spa"];
     } else {
-        currentAnswer = NO;
+        _currentAnswer = NO;
         random = rand();
         random = random % [_languageArray count];
         return [[_languageArray objectAtIndex:random] objectForKey:@"text_spa"];
     }
 }
-
 
 @end
